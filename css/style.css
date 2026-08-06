@@ -8,7 +8,11 @@
     --border-color: rgba(17, 17, 17, 0.4);
     --hud-bg: rgba(248, 247, 242, 0.8);
 }
-
+canvas {
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none; /* جلوگیری از زوم و اسکرول ناخواسته روی موبایل */
+}
 body.dark-mode {
     --bg-color: #455548;
     --text-color: #f8f7f2;
@@ -36,25 +40,53 @@ html, body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Theme Toggle Button */
+/* Minimal Toggle Switch (Refined) */
 .theme-toggle {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 100;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 5px 10px;
+    
+    /* ابعاد کشویی مینیمال */
+    width: 46px;
+    height: 24px;
+    padding: 3px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 0.7rem;
-    transition: all 0.3s ease;
+    
+    /* حالت لایت: زمینه سبز زیتونی، بدون بوردر (درخواستی) */
+    background-color: #455548;
+    border: none;
+    
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-.theme-toggle:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
+/* دایره داخل کلید */
+.theme-toggle .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    
+    /* حالت لایت: رنگ دایره سفید/کرمی */
+    background-color: #f8f7f2;
+    
+    /* انیمیشن حرکت جابه‌جایی نرم */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+/* --- تغییرات حالت دارک مود (با کلاس جدید body.dark-mode .theme-toggle) --- */
+
+/* حالت دارک: زمینه کشویی سفید می‌شود */
+body.dark-mode .theme-toggle {
+    background-color: #f8f7f2;
+}
+
+/* حالت دارک: دایره به سمت راست می‌رود و رنگ آن سبز زیتونی می‌شود */
+body.dark-mode .theme-toggle .toggle-thumb {
+    transform: translateX(22px);
+    background-color: #455548;
 }
 
 /* Canvas overlay for game elements */
@@ -79,6 +111,13 @@ html, body {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
+}
+
+/* رنگ زغالی برای لوگو و لوگوتایپ */
+.hero-logo svg, 
+.logotype svg {
+    fill: #3c3c3b !important;
+    color: #3c3c3b !important;
 }
 
 .logo {
