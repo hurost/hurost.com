@@ -7,17 +7,41 @@
     <meta name="description" content="Hurost Creative Studio - Visual Communication, Art Direction and Motion Design">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 
 <body>
 
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">☀ LIGHT</button>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Minimal Active Balls HUD -->
+    <div id="gameStats" class="game-stats">BALLS: <span id="activeBallCount">1</span></div>
+
     <header class="hero">
-        <div class="logo">
-            <img src="images/logo.svg" alt="Hurost Logo Symbol">
-            <img src="images/logotyp-en.svg" alt="Hurost" class="logotype">
+        <div class="logo" id="heroLogo">
+            <!-- Embedded Symbol SVG -->
+            <svg class="logo-symbol" id="svgSymbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475.74 479.89">
+                <ellipse cx="240.91" cy="79.4" rx="78.95" ry="79.4"/>
+                <ellipse cx="396.78" cy="286.49" rx="78.95" ry="79.4"/>
+                <ellipse cx="78.95" cy="188.77" rx="78.95" ry="79.4"/>
+                <path d="M269.16,249.52v-127.61s-63.81-38.96-63.81-38.96v113.53c0,9.54-9.98,15.75-18.47,11.48l-109.16-54.88v64.17s92.35,46.43,92.35,46.43c21.62,10.87,35.27,33.09,35.27,57.4v121.22s0,37.59,0,37.59h63.81v-52.73c0-24.31,13.66-46.53,35.27-57.4l92.35-46.43v-64.17l-109.16,54.88c-8.49,4.27-18.47-1.94-18.47-11.48v-53.04Z"/>
+            </svg>
+
+            <!-- Embedded Logotype SVG -->
+            <svg class="logotype" id="svgLogotype" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155.05 160.68">
+                <path d="M0,0v160.68h27.87s0-90.86,0-90.86c0-5.04,4.1-9.13,9.15-9.13h130.68c5.05,0,9.15,4.09,9.15,9.13v90.86h28.06V53.56c0-10.08-8.2-18.25-18.3-18.25H34.71c-5.05,0-9.15-4.09-9.15-9.13V0H0Z"/>
+                <path d="M255.22,35.71v92.45c0,4.3,3.49,7.79,7.79,7.79h151.53c4.3,0,7.79-3.49,7.79-7.79V35.71h27.95v106.7c0,10.09-8.18,18.28-18.28,18.28h-183.83c-10.09,0-18.28-8.18-18.28-18.28V35.71h25.33Z"/>
+                <path d="M778.39,160.68h-183.83c-10.09,0-18.28-8.18-18.28-18.28V53.98c0-10.09,8.18-18.28,18.28-18.28h183.83c10.09,0,18.28,8.18,18.28,18.28v88.42c0,10.09-8.18,18.28-18.28,18.28ZM768.71,128.16v-59.19c0-4.3-3.49-7.79-7.79-7.79h-151.53c-4.3,0-7.79,3.49-7.79,7.79v59.19c0,4.3,3.49,7.79,7.79,7.79h151.53c4.3,0,7.79-3.49,7.79-7.79Z"/>
+                <path d="M483.04,160.68h28.07v-70.83c0-6.91,3.92-13.23,10.12-16.32l26.49-12.82v-25l-31.31,15.61c-2.43,1.21-5.3-.55-5.3-3.26v-12.34s-28.06,0-28.06,0v50.29s0,74.69,0,74.69Z"/>
+                <path d="M860.08,60.7h187.53v-25s-203.08,0-203.08,0c-10.11,0-18.3,8.17-18.3,18.25v40.21c0,10.08,8.2,18.25,18.3,18.25h168.93c5.05,0,9.15,2.9,9.15,7.93v6.21c0,5.04-4.1,9.13-9.15,9.13h-187.24v25h203.08c10.11,0,18.3-8.17,18.3-18.25v-39.93c0-10.08-8.2-18.25-18.3-18.25h-169.23c-5.05,0-9.15-4.09-9.15-9.13v-5.3c0-5.04,4.1-9.13,9.15-9.13Z"/>
+                <path d="M1076.18,0v142.43c0,10.08,8.2,18.25,18.3,18.25h60.57v-23.01h-43.96c-5.05,0-9.15-4.09-9.15-9.13v-60.7c0-5.04,4.1-7.13,9.15-7.13h26.1v-25.41h-26.1c-5.05,0-9.15-4.09-9.15-9.13V0h-25.76Z"/>
+            </svg>
         </div>
 
         <h1>Creative Studio</h1>
@@ -27,18 +51,17 @@
             Art Direction<br>
             Motion Design
         </p>
+
+        <!-- Start & Results UI -->
+        <div class="game-ui-container" id="gameUI">
+            <div id="gameResults" class="game-results">
+                <span id="congratsText" class="congrats" style="display:none;">NEW RECORD!</span>
+                <span class="score-line" id="resScore">MAX BALLS: 0</span>
+                <span class="time-line" id="resTime">TIME: 0s</span>
+            </div>
+            <div class="click-to-play" id="btnStart">CLICK TO PLAY</div>
+        </div>
     </header>
-
-
-    <section class="works">
-       <h2>Selected Works</h2>
-       <div class="portfolio-grid">
-           <div class="portfolio-item">Poster Series 01</div>
-            <div class="portfolio-item">Motion Reel '26</div>
-            <div class="portfolio-item">Brand Identity</div>
-       </div>
-    </section>
-
 
     <section class="about">
         <h2>About</h2>
@@ -46,12 +69,354 @@
             Hurost Creative Studio explores visual ideas,
             design concepts and creative solutions.
         </p>
-    </section>
 
+        <div class="coming-soon-text">
+            COMING SOON
+        </div>
+
+        <div class="contact-info">
+            <div>Email: <a href="mailto:info@hurost.org">info@hurost.org</a></div>
+            <div>Phone: <a href="tel:+989120130354">+98 912 013 0354</a></div>
+        </div>
+    </section>
 
     <footer>
         © Hurost Creative Studio
     </footer>
 
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const heroLogo = document.getElementById('heroLogo');
+        const svgSymbol = document.getElementById('svgSymbol');
+        const svgLogotype = document.getElementById('svgLogotype');
+        const gameUI = document.getElementById('gameUI');
+        const btnStart = document.getElementById('btnStart');
+        const gameStats = document.getElementById('gameStats');
+        const activeBallCount = document.getElementById('activeBallCount');
+        const gameResults = document.getElementById('gameResults');
+        const resScore = document.getElementById('resScore');
+        const resTime = document.getElementById('resTime');
+        const congratsText = document.getElementById('congratsText');
+        const themeToggle = document.getElementById('themeToggle');
+
+        let width, height;
+        let isPlaying = false;
+        let paddleHits = 0;
+        let maxSimultaneousBalls = 0;
+        let startTime = 0;
+        let logoScale = 1;
+        let logoHitStreakTimeout;
+        let isDarkMode = false;
+
+        const softPastels = [
+            '#f87171', '#fb923c', '#fbbf24', '#a3e635', 
+            '#34d399', '#22d3ee', '#818cf8', '#c084fc', '#f472b6'
+        ];
+
+        // Dark/Light Theme Switching
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            themeToggle.textContent = isDarkMode ? '☾ DARK' : '☀ LIGHT';
+        });
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Paddle Configuration
+        const paddle = {
+            width: 120,
+            height: 10,
+            x: 0,
+            y: 0,
+            shakeY: 0
+        };
+
+        // Pixel Particle Class
+        class PixelParticle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() > 0.5 ? 4 : 6;
+                this.vx = (Math.random() - 0.5) * 6;
+                this.vy = (Math.random() - 0.5) * 6;
+                this.life = 1.0;
+                this.color = color;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= 0.04;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = Math.max(0, this.life);
+                ctx.fillRect(Math.round(this.x), Math.round(this.y), this.size, this.size);
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        let particles = [];
+
+        function createPixelBurst(x, y, color) {
+            let burstColor = color || (isDarkMode ? '#f1f5f9' : '#111111');
+            for (let i = 0; i < 10; i++) {
+                particles.push(new PixelParticle(x, y, burstColor));
+            }
+        }
+
+        // Ball Class
+        class Ball {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.radius = 6;
+                this.vx = vx;
+                this.vy = vy;
+                this.speedMultiplier = 1;
+            }
+
+            update() {
+                this.x += this.vx * this.speedMultiplier;
+                this.y += this.vy * this.speedMultiplier;
+
+                // Wall collisions
+                if (this.x - this.radius < 0) {
+                    this.x = this.radius;
+                    this.vx *= -1;
+                }
+                if (this.x + this.radius > width) {
+                    this.x = width - this.radius;
+                    this.vx *= -1;
+                }
+                if (this.y - this.radius < 0) {
+                    this.y = this.radius;
+                    this.vy *= -1;
+                }
+
+                // Paddle collision
+                if (
+                    this.y + this.radius >= paddle.y + paddle.shakeY &&
+                    this.y - this.radius <= paddle.y + paddle.height + paddle.shakeY &&
+                    this.x >= paddle.x &&
+                    this.x <= paddle.x + paddle.width &&
+                    this.vy > 0
+                ) {
+                    this.vy = -Math.abs(this.vy);
+                    let hitOffset = (this.x - (paddle.x + paddle.width / 2)) / (paddle.width / 2);
+                    this.vx = hitOffset * 7;
+                    
+                    paddleHits++;
+                    this.speedMultiplier += 0.015;
+
+                    paddle.shakeY = 3;
+                    setTimeout(() => paddle.shakeY = 0, 70);
+                    createPixelBurst(this.x, paddle.y);
+
+                    if (paddleHits % 5 === 0) {
+                        spawnExtraBall(this.x, paddle.y - 12);
+                    }
+                }
+
+                // Accurate Shape-Based Collision for Symbol & Logotype
+                this.checkSVGElementCollision(svgSymbol);
+                this.checkSVGElementCollision(svgLogotype);
+            }
+
+            checkSVGElementCollision(svgEl) {
+                const rect = svgEl.getBoundingClientRect();
+                
+                // Outer Boundary Box check
+                if (
+                    this.x + this.radius > rect.left &&
+                    this.x - this.radius < rect.right &&
+                    this.y + this.radius > rect.top &&
+                    this.y - this.radius < rect.bottom
+                ) {
+                    // Check exact path hit
+                    const paths = svgEl.querySelectorAll('path, ellipse');
+                    for (let p of paths) {
+                        const pRect = p.getBoundingClientRect();
+                        if (
+                            this.x + this.radius > pRect.left &&
+                            this.x - this.radius < pRect.right &&
+                            this.y + this.radius > pRect.top &&
+                            this.y - this.radius < pRect.bottom
+                        ) {
+                            // Bounce back accurately
+                            const centerX = pRect.left + pRect.width / 2;
+                            const centerY = pRect.top + pRect.height / 2;
+
+                            if (Math.abs(this.x - centerX) > Math.abs(this.y - centerY)) {
+                                this.vx *= -1;
+                            } else {
+                                this.vy *= -1;
+                            }
+
+                            onLogoHit(this.x, this.y);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = isDarkMode ? '#f1f5f9' : '#111111';
+                ctx.beginPath();
+                ctx.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        let balls = [];
+
+        function onLogoHit(hitX, hitY) {
+            const randomColor = softPastels[Math.floor(Math.random() * softPastels.length)];
+            
+            // Soft Flash Effect
+            heroLogo.style.filter = `drop-shadow(0 0 14px ${randomColor})`;
+            setTimeout(() => {
+                heroLogo.style.filter = 'none';
+            }, 140);
+
+            // Very Smooth & Soft Elastic Shake
+            logoScale = Math.min(logoScale + 0.03, 1.18);
+            let softAngle = (Math.random() - 0.5) * 2; // Subtle angle
+            heroLogo.style.transform = `scale(${logoScale}) rotate(${softAngle}deg)`;
+
+            clearTimeout(logoHitStreakTimeout);
+            logoHitStreakTimeout = setTimeout(() => {
+                logoScale = 1;
+                heroLogo.style.transform = `scale(1) rotate(0deg)`;
+            }, 250);
+
+            createPixelBurst(hitX, hitY, randomColor);
+        }
+
+        function spawnExtraBall(x, y) {
+            let angle = (Math.random() * Math.PI / 3) + Math.PI / 3;
+            let speed = 6.5;
+            let vx = speed * Math.cos(angle) * (Math.random() > 0.5 ? 1 : -1);
+            let vy = -speed * Math.sin(angle);
+            balls.push(new Ball(x, y, vx, vy));
+
+            if (balls.length > maxSimultaneousBalls) {
+                maxSimultaneousBalls = balls.length;
+            }
+        }
+
+        // Paddle Controls
+        window.addEventListener('mousemove', (e) => {
+            paddle.x = e.clientX - paddle.width / 2;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                paddle.x = e.touches[0].clientX - paddle.width / 2;
+            }
+        });
+
+        function startGame() {
+            isPlaying = true;
+            paddleHits = 0;
+            maxSimultaneousBalls = 1;
+            startTime = Date.now();
+
+            gameUI.style.display = 'none';
+            gameStats.style.display = 'block';
+
+            paddle.x = width / 2 - paddle.width / 2;
+            paddle.y = height - 50;
+
+            balls = [new Ball(width / 2, height - 80, (Math.random() > 0.5 ? 6 : -6), -7)];
+        }
+
+        function endGame() {
+            isPlaying = false;
+            let totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+
+            let formattedTime = "";
+            if (totalSeconds >= 60) {
+                let mins = Math.floor(totalSeconds / 60);
+                let secs = totalSeconds % 60;
+                formattedTime = `${mins}m ${secs}s`;
+            } else {
+                formattedTime = `${totalSeconds}s`;
+            }
+
+            let previousRecord = parseInt(localStorage.getItem('hurost_max_balls') || '0', 10);
+            let isNewRecord = false;
+
+            if (maxSimultaneousBalls > previousRecord) {
+                localStorage.setItem('hurost_max_balls', maxSimultaneousBalls);
+                isNewRecord = true;
+            }
+
+            gameStats.style.display = 'none';
+            gameUI.style.display = 'flex';
+            gameResults.style.display = 'flex';
+
+            if (isNewRecord) {
+                const randomPastel = softPastels[Math.floor(Math.random() * softPastels.length)];
+                congratsText.style.color = randomPastel;
+                congratsText.style.display = 'block';
+            } else {
+                congratsText.style.display = 'none';
+            }
+
+            resScore.textContent = `MAX BALLS: ${maxSimultaneousBalls}`;
+            resTime.textContent = `TIME: ${formattedTime}`;
+            btnStart.textContent = 'CLICK TO PLAY AGAIN';
+        }
+
+        btnStart.addEventListener('click', startGame);
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, width, height);
+
+            if (isPlaying) {
+                paddle.y = height - 50;
+
+                ctx.fillStyle = isDarkMode ? '#f1f5f9' : '#111111';
+                ctx.beginPath();
+                ctx.roundRect(paddle.x, paddle.y + paddle.shakeY, paddle.width, paddle.height, 5);
+                ctx.fill();
+
+                for (let i = balls.length - 1; i >= 0; i--) {
+                    balls[i].update();
+                    balls[i].draw();
+
+                    if (balls[i].y - balls[i].radius > height) {
+                        balls.splice(i, 1);
+                    }
+                }
+
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    particles[i].update();
+                    particles[i].draw();
+                    if (particles[i].life <= 0) {
+                        particles.splice(i, 1);
+                    }
+                }
+
+                activeBallCount.textContent = balls.length;
+
+                if (balls.length === 0) {
+                    endGame();
+                }
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
 </body>
 </html>
