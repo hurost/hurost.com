@@ -9,11 +9,10 @@
     --hud-bg: rgba(248, 247, 242, 0.8);
 }
 
-
 body.dark-mode {
-    --bg-color: #455548; /* Slate Olive / Charcoal Green */
-    --text-color: #f8f7f2; /* Cream White for pleasant contrast */
-    --text-muted: #b8c4ba; /* Soft Muted Sage for secondary text */
+    --bg-color: #455548;
+    --text-color: #f8f7f2;
+    --text-muted: #b8c4ba;
     --border-color: rgba(248, 247, 242, 0.3);
     --hud-bg: rgba(69, 85, 72, 0.85);
 }
