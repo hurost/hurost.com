@@ -18,21 +18,19 @@ body.dark-mode {
     --hud-bg: rgba(69, 85, 72, 0.85);
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+html, body {
+    width: 100%;
+    min-height: 100%;
     background: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
