@@ -8,11 +8,13 @@
     --border-color: rgba(17, 17, 17, 0.4);
     --hud-bg: rgba(248, 247, 242, 0.8);
 }
+
 canvas {
     user-select: none;
     -webkit-user-select: none;
-    touch-action: none; /* جلوگیری از زوم و اسکرول ناخواسته روی موبایل */
+    touch-action: none;
 }
+
 body.dark-mode {
     --bg-color: #455548;
     --text-color: #f8f7f2;
@@ -21,14 +23,17 @@ body.dark-mode {
     --hud-bg: rgba(69, 85, 72, 0.85);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     min-height: 100%;
     background: var(--bg-color);
@@ -40,56 +45,40 @@ html, body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Minimal Toggle Switch (Refined) */
 .theme-toggle {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 100;
-    
-    /* ابعاد کشویی مینیمال */
     width: 46px;
     height: 24px;
     padding: 3px;
     border-radius: 20px;
     cursor: pointer;
-    
-    /* حالت لایت: زمینه سبز زیتونی، بدون بوردر (درخواستی) */
     background-color: #455548;
     border: none;
-    
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
 }
 
-/* دایره داخل کلید */
 .theme-toggle .toggle-thumb {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    
-    /* حالت لایت: رنگ دایره سفید/کرمی */
     background-color: #f8f7f2;
-    
-    /* انیمیشن حرکت جابه‌جایی نرم */
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
-/* --- تغییرات حالت دارک مود (با کلاس جدید body.dark-mode .theme-toggle) --- */
-
-/* حالت دارک: زمینه کشویی سفید می‌شود */
 body.dark-mode .theme-toggle {
     background-color: #f8f7f2;
 }
 
-/* حالت دارک: دایره به سمت راست می‌رود و رنگ آن سبز زیتونی می‌شود */
 body.dark-mode .theme-toggle .toggle-thumb {
     transform: translateX(22px);
     background-color: #455548;
 }
 
-/* Canvas overlay for game elements */
 #gameCanvas {
     position: fixed;
     top: 0;
@@ -100,7 +89,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
     pointer-events: none;
 }
 
-/* --- Hero Section --- */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -113,8 +101,7 @@ body.dark-mode .theme-toggle .toggle-thumb {
     z-index: 1;
 }
 
-/* رنگ زغالی برای لوگو و لوگوتایپ */
-.hero-logo svg, 
+.hero-logo svg,
 .logotype svg {
     fill: #3c3c3b !important;
     color: #3c3c3b !important;
@@ -160,7 +147,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
     line-height: 1.8;
 }
 
-/* --- Start / Game UI Elements --- */
 .game-ui-container {
     position: absolute;
     bottom: 35px;
@@ -194,12 +180,21 @@ body.dark-mode .theme-toggle .toggle-thumb {
 }
 
 @keyframes gentleWiggle {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-2px) rotate(-0.5deg); }
-    75% { transform: translateY(1px) rotate(0.5deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-2px) rotate(-0.5deg);
+    }
+
+    75% {
+        transform: translateY(1px) rotate(0.5deg);
+    }
 }
 
-/* Minimal HUD Counter */
 .game-stats {
     position: fixed;
     top: 25px;
@@ -216,7 +211,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
     border-radius: 12px;
 }
 
-/* Game Results Box */
 .game-results {
     display: none;
     flex-direction: column;
@@ -244,7 +238,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
     color: var(--text-muted);
 }
 
-/* --- About Section --- */
 .about {
     padding: 160px 10% 100px;
     max-width: 1200px;
@@ -291,7 +284,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
 .about .contact-info a {
     color: var(--text-color);
     text-decoration: none;
-    /* border-bottom: 1px dotted var(--text-color);*/
     padding-bottom: 2px;
     transition: opacity 0.2s ease;
 }
@@ -300,7 +292,6 @@ body.dark-mode .theme-toggle .toggle-thumb {
     opacity: 0.6;
 }
 
-/* --- Footer --- */
 footer {
     text-align: center;
     padding: 60px 20px;
