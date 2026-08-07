@@ -132,8 +132,16 @@ body.dark-mode .theme-toggle .toggle-thumb {
     height: auto;
 }
 
+.hero h0 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: 0.1rem;
+    color: var(--text-color);
+}
+
 .hero h1 {
-    font-size: clamp(1.02rem, 3vw, 2rem);
+    font-size: clamp(1.02rem, 2vw, 2rem);
     font-weight: 300;
     margin-bottom: 24px;
     letter-spacing: 0.1rem;
@@ -141,11 +149,12 @@ body.dark-mode .theme-toggle .toggle-thumb {
 }
 
 .hero p {
-    font-size: 1.05rem;
+    font-size: clamp(1.02rem, 1.5vw, 2rem);
     color: var(--text-muted);
     font-weight: 400;
     line-height: 1.8;
 }
+
 
 .game-ui-container {
     position: absolute;
