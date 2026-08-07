@@ -1,0 +1,27 @@
+{
+  "navigation": [
+    {
+      "title": "خانه",
+      "link": "/"
+    },
+    {
+      "title": "واید مایند",
+      "link": "/wide-mind.html"
+    },
+    {
+      "title": "سرگرمی",
+      "link": "/entertainment.html"
+    }
+  ],
+  "wideMind": [
+    {
+      "id": "risheh",
+      "title": "پروژه ریشه",
+      "category": "مسئولیت اجتماعی",
+      "summary": "توضیح مختصر درباره نقش پروژه ریشه و فعالیت‌های آن.",
+      "image": "assets/images/risheh-cover.jpg",
+      "link": "#",
+      "status": "در حال اجرا"
+    }
+  ]
+}
