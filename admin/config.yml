@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: hurost/hurost.com # نام کامل ریپازیتوری شما در گیت‌هاب
+  repo: hurost/hurost.com
   branch: main
-  base_url: https://hurost-cms-auth.workers.dev # آدرس ورکر کلودفلر
-  auth_endpoint: /auth
+  base_url: https://hurost-cms-auth.hurost-crg-1de.workers.dev
+auth_endpoint: /auth
 
 media_folder: "assets/images"
 public_folder: "assets/images"
